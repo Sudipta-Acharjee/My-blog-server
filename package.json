@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Sudipta-Acharjee/My-blog-server/issues"
   },
-  "homepage": "https://github.com/Sudipta-Acharjee/My-blog-server#readme"
+  "homepage": "https://github.com/Sudipta-Acharjee/My-blog-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
