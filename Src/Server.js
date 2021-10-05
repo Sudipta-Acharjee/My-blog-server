@@ -5,14 +5,14 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/api/articles/:name', (req, res) => {
+app.get('/api/articles/:name',async (req, res) => {
     const articleName = req.params.name;
-    const client = MongoClient.connect('mongodb://localhost:27017',{
+    const client = await MongoClient.connect('mongodb://localhost:27017',{
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
     const db= client.db("myblog")
-    const articleInfo=db.collection('articles').findOne({name: articleName});
+    const articleInfo=await db.collection('articles').findOne({name: articleName});
     res.status(200).json(articleInfo);
     client.close();
 });
