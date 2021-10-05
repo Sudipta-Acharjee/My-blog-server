@@ -1,18 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const articleInfo = {
-    "learn-react": {
-        comments: []
-    },
-    "learn-node": {
-        comments: []
-    },
-    "my-thoughts-on-learning-react": {
-        comments: []
-    }
-}
-
 const app = express();
 
 app.use(bodyParser.json());
