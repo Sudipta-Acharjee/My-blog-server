@@ -17,8 +17,11 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/hello', (req, res) => res.send("Hellos"));
-app.post('/hello', (req, res) => res.send(`Hello ${req.body.name}`));
-app.get("/hello/:name", (req, res) => res.send(`Hello ${req.params.name}`));
+app.post("/api/articles/:name/add-comments", (req, res) => {
+    const { username, text } = req.body;
+    const articleName = req.params.name;
+
+    articleInfo[articleName].comments.push({ username, text });
+})
 
 app.listen(8000, () => console.log("Listening on port 8000"));
