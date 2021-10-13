@@ -13,7 +13,6 @@ const withDB = async (operation, res) => {
         });
         const db = client.db("myblog");
         operation(db);
-        client.close();
     } catch (error) {
         res.status(500).json({ message: 'Error Connecting to db', error });
     }
