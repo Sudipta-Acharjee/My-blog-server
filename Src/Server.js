@@ -5,16 +5,14 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const withDB = async (operation) => {
+const withDB = async (operation, res) => {
     try {
-        const articleName = req.params.name;
         const client = await MongoClient.connect('mongodb://localhost:27017', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        const db = client.db("myblog")
-        const articleInfo = await db.collection('articles').findOne({ name: articleName });
-        res.status(200).json(articleInfo);
+        const db = client.db("myblog");
+        operation(db);
         client.close();
     } catch (error) {
         res.status(500).json({ message: 'Error Connecting to db', error });
